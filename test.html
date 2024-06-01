@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сканер штрих-коду</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Сканер штрих-коду</h2>
+        <input type="text" id="productName" placeholder="Назва товару"><br>
+        <input type="number" id="quantity" placeholder="Кількість"><br>
+        <button onclick="addToGoogleSheet()">OK</button>
+    </div>
+
+    <script>
+        function addToGoogleSheet() {
+            var productName = document.getElementById('productName').value;
+            var quantity = document.getElementById('quantity').value;
+
+            // Ваш URL-адреса для Google Apps Script
+            var scriptUrl = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+            // Виконайте AJAX-запит до вашого Google Apps Script для додавання даних
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", scriptUrl + "?productName=" + productName + "&quantity=" + quantity, true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
